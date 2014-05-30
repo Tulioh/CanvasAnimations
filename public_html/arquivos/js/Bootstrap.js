@@ -1,14 +1,15 @@
 document.write('<script type="text/javascript" src="arquivos/js/Canvas.js"></script>');
 document.write('<script type="text/javascript" src="arquivos/js/Sprite.js"></script>');
 document.write('<script type="text/javascript" src="arquivos/js/Position.js"></script>');
+document.write('<script type="text/javascript" src="arquivos/js/SpriteData.js"></script>');
+document.write('<script type="text/javascript" src="arquivos/js/HttpHelper.js"></script>');
 
 function main() {
     var canvas = new Canvas();
     canvas.init();
     
-    var spriteData = JSON.parse( GETJSON() );
-    
-    console.log(spriteData.sprite);
+    var spriteData = new SpriteData();
+    spriteData.loadSpriteItems();
     
     var img = new Image();
     img.src = "arquivos/imgs/sprites-01.png";
@@ -20,13 +21,4 @@ function main() {
     };
     
     canvas.clearCanvas();
-}
-
-function GETJSON() {
-    var xmlHttp = null;
-
-    xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "arquivos/others/SpriteData.json", false );
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
 }

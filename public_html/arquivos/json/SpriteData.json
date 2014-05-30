@@ -1,22 +1,18 @@
-{
-    "sprite00": [
+[
     {
-        "image": "01",
         "id": "100",
+        "image": "00",
         "posX": "0",
         "posY": "0",
         "width": "32",
         "height": "32"
-    }
-    ],
-    "sprite01": [
+    },
     {
+        "id": "101",
         "image": "01",
-        "id": "100",
         "posX": "1",
         "posY": "0",
         "width": "32",
         "height": "32"
     }
-    ]
-}
+]
