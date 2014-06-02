@@ -1,25 +1,18 @@
 var Sprite = function() {
-    this.id;
-    this.image;
-    this.posX;
-    this.posY;
-    this.width;
-    this.height;
+    var image;
+    var posX;
+    var posY;
+    var width;
+    var height;
     
     this.getImage = function() {
         return this.image;
     };
     
-    this.setImage = function( image ) {
-        this.image = image;
-    };
-    
-    this.getId = function() {
-        return this.id;
-    };
-    
-    this.setId = function( id ) {
-        this.image = id;
+    this.setImage = function( imgSrc ) {
+        var img = new Image();
+        img.src = imgSrc;
+        this.image = img;
     };
     
     this.getPosX = function() {
@@ -27,7 +20,7 @@ var Sprite = function() {
     };
     
     this.setPosX = function( posX ) {
-        this.image = posX;
+        this.posX = posX;
     };
     
     this.getPosY = function() {
@@ -35,7 +28,7 @@ var Sprite = function() {
     };
     
     this.setPosY = function( posY ) {
-        this.image = posY;
+        this.posY = posY;
     };
     
     this.getWidth = function() {
@@ -43,7 +36,7 @@ var Sprite = function() {
     };
     
     this.setWidth = function( width ) {
-        this.image = width;
+        this.width = width;
     };
     
     this.getHeight = function() {
@@ -51,6 +44,6 @@ var Sprite = function() {
     };
     
     this.setHeight = function( height ) {
-        this.image = height;
+        this.height = height;
     };
- };
+};
