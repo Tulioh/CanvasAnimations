@@ -1,9 +1,8 @@
 var Sprite = function() {
     var image;
-    var posX;
-    var posY;
     var width;
     var height;
+    var frames;
     
     this.getImage = function() {
         return this.image;
@@ -45,5 +44,13 @@ var Sprite = function() {
     
     this.setHeight = function( height ) {
         this.height = height;
+    };
+    
+    this.getFrames = function() {
+        return this.frames;
+    };
+    
+    this.addFrame = function( frame ) {
+        this.frames.push( frame );
     };
 };
