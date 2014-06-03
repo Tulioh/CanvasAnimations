@@ -21,14 +21,14 @@ var SpriteData = function() {
             if( spriteData.animated == true ) {
                 spriteData.frames.forEach(function( frame ){
                     var framePos = new Position();
-                    framePos.setX( frame.posX );
-                    framePos.setY( frame.posY );
+                    framePos.x = frame.posX;
+                    framePos.y = frame.posY;
                     sprite.addFrame( framePos );
                 });
             } else {
                 var framePos = new Position();
-                framePos.setX( spriteData.frames[0].posX );
-                framePos.setY( spriteData.frames[0].posY );
+                framePos.x = spriteData.frames[0].posX;
+                framePos.y = spriteData.frames[0].posY;
                 sprite.addFrame( framePos );
             }
             

@@ -16,8 +16,8 @@ var Canvas = function() {
             sprite.getPosY(),
             sprite.getWidth(),
             sprite.getHeight(),
-            position.getX(),
-            position.getY(),
+            position.x,
+            position.y,
             sprite.getWidth(),
             sprite.getHeight() );
     };

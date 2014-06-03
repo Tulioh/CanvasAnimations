@@ -32,9 +32,9 @@ var Map = function() {
         
         jsonMap.tiles.forEach(function( tileData ){
             var position = new Position();
-            position.setX( tileData.x );
-            position.setY( tileData.y );
-            position.setZ( tileData.z );
+            position.x = tileData.x;
+            position.y = tileData.y;
+            position.z = tileData.z;
             
             var spriteData = new SpriteData();
             var item = spriteData.getItemById( tileData.id );
