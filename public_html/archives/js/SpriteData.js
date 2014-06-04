@@ -5,7 +5,7 @@ var SpriteData = function() {
     };
     
     this.loadSpriteItems = function() {
-        var data = JSON.parse( HttpHelper.doGET( "archives/json/SpriteData.json" ) );
+        var data = HttpHelper.getJSON( "archives/json/SpriteData.json" );
         
         data.forEach(function( spriteData ){
             var item = new Item();
@@ -39,10 +39,12 @@ var SpriteData = function() {
     };
     
     this.getItemById = function( id ) {
-        SpriteData.items.forEach(function( item ){
+        for( var i = 0; i <= SpriteData.items.length; i++ ) {
+            var item = SpriteData.items[i];
+            
             if( item.getId() == id )
                 return item;
-        });
+        }
     };
 };
 

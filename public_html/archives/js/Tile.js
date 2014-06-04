@@ -3,11 +3,11 @@ var Tile = function() {
     var position = new Position();
     
     this.getItem = function() {
-        return item;
+        return this.item;
     };
     
-    this.setItem = function( param ) {
-        item = param;
+    this.setItem = function( item ) {
+        this.item = item;
     };
     
     this.getPosition = function() {

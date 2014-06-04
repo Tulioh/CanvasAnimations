@@ -32,7 +32,7 @@ var Sprite = function() {
     };
     
     this.getFrames = function() {
-        return this.frames;
+        return frames;
     };
     
     this.addFrame = function( frame ) {

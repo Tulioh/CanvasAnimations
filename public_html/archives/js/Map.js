@@ -6,8 +6,11 @@ var Map = function() {
     var templeZ;
     var tiles = [];
     
+    var canvas = new Canvas();
+    
     this.init = function() {
-        parseJsonMap();        
+        parseJsonMap();
+        canvas.init();
     };
     
     this.drawMap = function() {
@@ -17,11 +20,24 @@ var Map = function() {
     };
     
     function drawTile( tile ) {
-        new Canvas().drawAt( tile.getItem().getSprite(), tile.getPosition() );
+        var sprite = tile.getItem().getSprite();
+        var position = tile.getPosition();
+        
+        canvas.getContext().drawImage(
+            sprite.getImage(),
+            sprite.getFrames()[ sprite.actualFrame ].x * 32,
+            sprite.getFrames()[ sprite.actualFrame ].y * 32,
+            sprite.getWidth(),
+            sprite.getHeight(),
+            position.x * 32,
+            position.y * 32,
+            sprite.getWidth(),
+            sprite.getHeight()
+        );
     };
     
     var parseJsonMap = function() {
-        var jsonMap = JSON.parse( HttpHelper.doGET( "archives/json/Map.json" ) );
+        var jsonMap = HttpHelper.getJSON( "archives/json/Map.json" );
         
         this.width = jsonMap.width;
         this.height = jsonMap.height;
