@@ -2,7 +2,8 @@ var Sprite = function() {
     var image;
     var width;
     var height;
-    var frames;
+    var frames = [];
+    var actualFrame;
     
     this.getImage = function() {
         return this.image;
@@ -35,6 +36,14 @@ var Sprite = function() {
     };
     
     this.addFrame = function( frame ) {
-        this.frames.push( frame );
+        frames.push( frame );
+    };
+    
+    this.getActualFrame = function() {
+        return this.actualFrame;
+    };
+    
+    this.setActualFrame = function( actualFrame ) {
+        this.actualFrame = actualFrame;
     };
 };

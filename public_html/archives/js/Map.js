@@ -12,7 +12,6 @@ var Map = function() {
     
     this.drawMap = function() {
         tiles.forEach(function( tile ) {
-            console.log("entou");
             drawTile( tile );
         });
     };

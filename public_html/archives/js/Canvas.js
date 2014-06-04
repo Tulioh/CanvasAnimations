@@ -12,8 +12,8 @@ var Canvas = function() {
     this.drawAt = function( sprite, position ) {
         Canvas.context.drawImage(
             sprite.getImage(),
-            sprite.getPosX(),
-            sprite.getPosY(),
+            sprite.frames[ sprite.actualFrame ].x,
+            sprite.frames[ sprite.actualFrame ].y,
             sprite.getWidth(),
             sprite.getHeight(),
             position.x,

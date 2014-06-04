@@ -2,28 +2,36 @@
     {
         "id": 100,
         "image": "01",
-        "posX": 0,
-        "posY": 0,
         "width": 32,
         "height": 32,
         "ground": true,
         "walkable": true,
         "stackable": false,
         "movable": false,
-        "animated": false
+        "animated": false,
+        "frames":[
+            {
+                "posX": 0,
+                "posY": 0
+            }
+        ]
     },
     {
         "id": 101,
         "image": "01",
-        "posX": 0,
-        "posY": 7,
         "width": 32,
         "height": 32,
         "ground": true,
         "walkable": true,
         "stackable": false,
         "movable": false,
-        "animated": false
+        "animated": false,
+        "frames":[
+            {
+                "posX": 0,
+                "posY": 7
+            }
+        ]
     },
     {
         "id": 1000,

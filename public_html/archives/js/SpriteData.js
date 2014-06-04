@@ -13,8 +13,6 @@ var SpriteData = function() {
             
             var sprite = new Sprite();
             sprite.setImage( "archives/imgs/sprites-" + spriteData.image + ".png" );
-            sprite.setPosX( spriteData.posX * 32 );
-            sprite.setPosY( spriteData.posY * 32 );
             sprite.setWidth( spriteData.width );
             sprite.setHeight( spriteData.height );
             
@@ -29,6 +27,7 @@ var SpriteData = function() {
                 var framePos = new Position();
                 framePos.x = spriteData.frames[0].posX;
                 framePos.y = spriteData.frames[0].posY;
+                sprite.setActualFrame( 0 );
                 sprite.addFrame( framePos );
             }
             
@@ -40,11 +39,10 @@ var SpriteData = function() {
     };
     
     this.getItemById = function( id ) {
-        for( var i = 0; i <= SpriteData.items.length; i++ ) {
-            var item = SpriteData.items[i];
+        SpriteData.items.forEach(function( item ){
             if( item.getId() == id )
                 return item;
-        }
+        });
     };
 };
 
