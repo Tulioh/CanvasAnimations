@@ -11,6 +11,10 @@ var Canvas = function() {
         context.clearRect( 0, 0, this.canvas.width, this.canvas.height );
     };
     
+    this.getCanvas = function() {
+        return canvas;
+    };
+    
     this.getContext = function() {
         return context;
     };

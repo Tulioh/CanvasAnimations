@@ -1,7 +1,9 @@
 var Creature = function() {
+    var position = new Position();
     var healthPercent = 100;
     var speed = 200;
-    var outfitFrame = [];
+    var walking = false;
+    var outfit = [];
     
     this.walk = function(oldPos, newPos) {
         if(oldPos == newPos)
@@ -9,6 +11,43 @@ var Creature = function() {
         
         lastDirection = oldPos.getDirectionFromPosition( newPos );
         
+        
+        
+    };
+    
+    // teste
+    this.draw = function() {
+        if( this.isWalking() )
+            console.log("andando");
+        else {
+            var item = new SpriteData().getItemById( this.outfit[0] );
+            
+            var sprite = item.getSprite();
+            sprite.setActualFrame( 0 );
+
+            var canvas = new Canvas();
+            canvas.init();
+
+            canvas.getContext().drawImage(
+                sprite.getImage(),
+                sprite.getFrames()[ sprite.actualFrame ].x * 32,
+                sprite.getFrames()[ sprite.actualFrame ].y * 32,
+                sprite.getWidth(),
+                sprite.getHeight(),
+                this.position.x * 32,
+                this.position.y * 32,
+                sprite.getWidth(),
+                sprite.getHeight()
+            );
+        }
+    };
+    
+    this.getPosition = function() {
+        return position;
+    };
+    
+    this.setPosition = function( position ) {
+        this.position = position;
     };
     
     this.getHealthPercent = function() {
@@ -27,11 +66,19 @@ var Creature = function() {
         return this.speed = speed;
     };
     
-    this.getOutfitFrame = function() {
-        return outfitFrame;
+    this.isWalking = function() {
+        return walking;
     };
     
-    this.setOutfitFrame = function( speed ) {
-        return this.outfitFrame = outfitFrame;
+    this.setWalking = function( walking ) {
+        return this.walking = walking;
+    };
+    
+    this.getOutfit = function() {
+        return outfit;
+    };
+    
+    this.setOutfit = function( outfit ) {
+        this.outfit = outfit;
     };
 };
