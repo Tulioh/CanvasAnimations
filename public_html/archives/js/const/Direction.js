@@ -1,4 +1,4 @@
-var Direction = {
+var DirectionConst = {
     North: {},
     NorthEast: {},
     NorthWest: {},

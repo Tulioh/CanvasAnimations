@@ -3,16 +3,16 @@ var Creature = function() {
     var healthPercent = 100;
     var speed = 200;
     var walking = false;
+    var direction;
     var outfit = [];
     
     this.walk = function(oldPos, newPos) {
         if(oldPos == newPos)
             return;
         
-        lastDirection = oldPos.getDirectionFromPosition( newPos );
+        walking = true;
         
-        
-        
+        position = newPos;
     };
     
     // teste
@@ -27,15 +27,15 @@ var Creature = function() {
 
             var canvas = new Canvas();
             canvas.init();
-
+            
             canvas.getContext().drawImage(
                 sprite.getImage(),
                 sprite.getFrames()[ sprite.actualFrame ].x * 32,
                 sprite.getFrames()[ sprite.actualFrame ].y * 32,
                 sprite.getWidth(),
                 sprite.getHeight(),
-                this.position.x * 32,
-                this.position.y * 32,
+                this.position.x * 31,
+                this.position.y * 30,
                 sprite.getWidth(),
                 sprite.getHeight()
             );
@@ -72,6 +72,16 @@ var Creature = function() {
     
     this.setWalking = function( walking ) {
         return this.walking = walking;
+    };
+    
+    this.getDirection = function() {
+        return direction;
+    };
+    
+    this.setDirection = function( direction ) {
+        if( direction != DirectionConst.InvalidDirection ) {
+            this.direction = direction;
+        }
     };
     
     this.getOutfit = function() {

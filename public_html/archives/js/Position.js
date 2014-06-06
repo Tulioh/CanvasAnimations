@@ -30,22 +30,22 @@ var Position = function() {
         var angle = getAngleFromPositions( fromPos, toPos ) * radToDec;
 
         if(angle >= 360 - 22.5 || angle < 0 + 22.5)
-            return Direction.East;
+            return DirectionConst.East;
         else if(angle >= 45 - 22.5 && angle < 45 + 22.5)
-            return Direction.NorthEast;
+            return DirectionConst.NorthEast;
         else if(angle >= 90 - 22.5 && angle < 90 + 22.5)
-            return Direction.North;
+            return DirectionConst.North;
         else if(angle >= 135 - 22.5 && angle < 135 + 22.5)
-            return Direction.NorthWest;
+            return DirectionConst.NorthWest;
         else if(angle >= 180 - 22.5 && angle < 180 + 22.5)
-            return Direction.West;
+            return DirectionConst.West;
         else if(angle >= 225 - 22.5 && angle < 225 + 22.5)
-            return Direction.SouthWest;
+            return DirectionConst.SouthWest;
         else if(angle >= 270 - 22.5 && angle < 270 + 22.5)
-            return Direction.South;
+            return DirectionConst.South;
         else if(angle >= 315 - 22.5 && angle < 315 + 22.5)
-            return Direction.SouthEast;
+            return DirectionConst.SouthEast;
         else
-            return Direction.InvalidDirection;
+            return DirectionConst.InvalidDirection;
     };
 };
