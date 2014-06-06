@@ -5,6 +5,7 @@ var Map = function() {
     var templeY;
     var templeZ;
     var tiles = [];
+    var creatures = [];
     
     var canvas = new Canvas();
     
@@ -84,5 +85,12 @@ var Map = function() {
     
     this.getTiles = function() {
         return this.tiles;
+    };
+    
+    this.getCreatureById = function( id ) {
+        for( var i = 0; i <= creatures.length; i++ ) {
+            if( creatures[i].getId == id )
+                return creatures[i];
+        }
     };
 };

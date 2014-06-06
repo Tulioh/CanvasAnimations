@@ -5,6 +5,7 @@ loadScript( "Position" );
 loadScript( "Tile" );
 loadScript( "Item" );
 loadScript( "Map" );
+loadScript( "LocalPlayer" );
 loadScript( "Creature" );
 loadScript( "HttpHelper" );
 loadScript( "EventHandler" );

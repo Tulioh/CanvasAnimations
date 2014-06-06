@@ -1,4 +1,5 @@
 var Creature = function() {
+    var id = 0;
     var position = new Position();
     var healthPercent = 100;
     var speed = 200;
@@ -15,6 +16,10 @@ var Creature = function() {
         position = newPos;
     };
     
+    this.doWalkingAnimation = function() {
+        
+    };
+    
     // teste
     this.draw = function() {
         if( this.isWalking() )
@@ -23,7 +28,15 @@ var Creature = function() {
             var item = new SpriteData().getItemById( this.outfit[0] );
             
             var sprite = item.getSprite();
-            sprite.setActualFrame( 0 );
+            
+            if( walking ) {
+                if( sprite.getActualFrame() == null || sprite.getActualFrame() == 2 )
+                    sprite.setActualFrame( 1 );
+                else 
+                    sprite.setActualFrame( 2 );
+            } else {
+                sprite.setActualFrame( 0 );
+            }
 
             var canvas = new Canvas();
             canvas.init();
@@ -40,6 +53,14 @@ var Creature = function() {
                 sprite.getHeight()
             );
         }
+    };
+    
+    this.getId = function() {
+        return id;
+    };
+    
+    this.setId = function( id ) {
+        this.id = id;
     };
     
     this.getPosition = function() {

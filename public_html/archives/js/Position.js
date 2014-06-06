@@ -48,4 +48,9 @@ var Position = function() {
         else
             return DirectionConst.InvalidDirection;
     };
+    
+    this.add = function( pos ) {
+        x += pos.x;
+        y += pos.y;
+    };
 };
