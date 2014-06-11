@@ -27,24 +27,21 @@ var Creature = function() {
         var item = new SpriteData().getItemById( this.outfit[0] );
         var sprite = item.getSprite();
         
-        if( this.isWalking() ) {
-            var currentAnimationTime = new Timer();
-                        
-            if( lastAnimationTime == undefined )
-                lastAnimationTime = currentAnimationTime;
+        if( sprite.getCurrentFrame() == null )
+            sprite.setCurrentFrame( 0 );
+        
+        if( this.isWalking() ) {           
             
-            if( sprite.getCurrentFrame() == null || sprite.getCurrentFrame() == 0 )
-                sprite.setCurrentFrame( 1 );
-            
-            if( lastAnimationTime.getTicksElapsed() > 1 ) {
-                if( sprite.getCurrentFrame() != 1 ) {
-                    sprite.setCurrentFrame( 1 );
+            if( lastAnimationTime.getTicksElapsed() > 500 ) {                
+                if( sprite.getCurrentFrame() !== 1) {
+                    sprite.setCurrentFrame(1);
                 } else {
-                    sprite.setCurrentFrame( 2 );
+                    sprite.setCurrentFrame(2);
                 }
-            }
 
-            lastAnimationTime = currentAnimationTime;
+                lastAnimationTime.restart();
+            }
+            
         } else {
             sprite.setCurrentFrame( 0 );
         }
@@ -110,5 +107,17 @@ var Creature = function() {
     
     this.setOutfit = function( outfit ) {
         this.outfit = outfit;
+    };
+    
+    this.getOutfitByDirection = function( direction ) {
+        if( direction == Direction.South ) {
+            return outfit[0];
+        } else if( direction == Direction.North ) {
+            return outfit[1];
+        } else if( direction == Direction.East ) {
+            return outfit[2];
+        } else if( direction == Direction.West ) {
+            return outfit[3];
+        }
     };
 };

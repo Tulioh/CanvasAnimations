@@ -1,7 +1,7 @@
-var Position = function() {
-    this.x;
-    this.y;
-    this.z;
+var Position = function(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
     
     this.getAngleFromPosition = function( position ) {
         return getAngleFromPositions( this, position );

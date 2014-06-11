@@ -1,5 +1,5 @@
 var Timer = function() {
-    var startedTicks = new Date().getMilliseconds();
+    var startedTicks = new Date();
     var stopped = false;
     
     this.start = function() {
@@ -11,7 +11,7 @@ var Timer = function() {
     };
     
     this.restart = function() {
-        startedTicks = new Date().getMilliseconds();
+        startedTicks = new Date();
         stopped = false;
     };
     
@@ -20,7 +20,7 @@ var Timer = function() {
     };
     
     this.getTicksElapsed = function() {
-        return new Date().getMilliseconds() - startedTicks;
+        return new Date().getTime() - startedTicks.getTime();
     };
     
     this.getTimeElapsed = function() {

@@ -1,3 +1,5 @@
+var creature;
+
 function main() {
     var canvas = new Canvas();
     canvas.init();
@@ -9,6 +11,8 @@ function main() {
     map.init();
     
     var eventHandler = new EventHandler();
+    
+    creature = new Creature();
     
     var gameLoop = function() {
         map.drawMap();
@@ -25,13 +29,8 @@ function main() {
 }
 
 function testeCreature() {
-    var creature = new Creature();
-    var p = new Position();
-    p.x = 10;
-    p.y = 5;
-    
     creature.setId( 1 );
-    creature.setPosition( p );
+    creature.setPosition( new Position( 10, 5, 7 ) );
     creature.setHealthPercent( 100 );
     creature.setSpeed( 200 );
     creature.setOutfit( [ 1000, 1001, 1002, 1003 ] );
