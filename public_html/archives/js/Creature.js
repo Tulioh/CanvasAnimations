@@ -5,9 +5,10 @@ var Creature = function() {
     var speed = 200;
     var walking = false;
     var direction;
+    var lastAnimationTime = new Timer();
     var outfit = [];
     
-    this.walk = function(oldPos, newPos) {
+    this.walk = function( oldPos, newPos ) {
         if(oldPos == newPos)
             return;
         
@@ -16,43 +17,41 @@ var Creature = function() {
         position = newPos;
     };
     
-    this.doWalkingAnimation = function() {
-        
+    this.doWalkingAnimation = function( newPosition ) {
+        position.add( newPosition );
+        walking = true;
     };
     
     // teste
     this.draw = function() {
-        if( this.isWalking() )
-            console.log("andando");
-        else {
-            var item = new SpriteData().getItemById( this.outfit[0] );
+        var item = new SpriteData().getItemById( this.outfit[0] );
+        var sprite = item.getSprite();
+        
+        if( this.isWalking() ) {
+            var currentAnimationTime = new Timer();
+                        
+            if( lastAnimationTime == undefined )
+                lastAnimationTime = currentAnimationTime;
             
-            var sprite = item.getSprite();
+            if( sprite.getCurrentFrame() == null || sprite.getCurrentFrame() == 0 )
+                sprite.setCurrentFrame( 1 );
             
-            if( walking ) {
-                if( sprite.getActualFrame() == null || sprite.getActualFrame() == 2 )
-                    sprite.setActualFrame( 1 );
-                else 
-                    sprite.setActualFrame( 2 );
-            } else {
-                sprite.setActualFrame( 0 );
+            if( lastAnimationTime.getTicksElapsed() > 1 ) {
+                if( sprite.getCurrentFrame() != 1 ) {
+                    sprite.setCurrentFrame( 1 );
+                } else {
+                    sprite.setCurrentFrame( 2 );
+                }
             }
 
-            var canvas = new Canvas();
-            canvas.init();
-            
-            canvas.getContext().drawImage(
-                sprite.getImage(),
-                sprite.getFrames()[ sprite.actualFrame ].x * 32,
-                sprite.getFrames()[ sprite.actualFrame ].y * 32,
-                sprite.getWidth(),
-                sprite.getHeight(),
-                this.position.x * 31,
-                this.position.y * 30,
-                sprite.getWidth(),
-                sprite.getHeight()
-            );
+            lastAnimationTime = currentAnimationTime;
+        } else {
+            sprite.setCurrentFrame( 0 );
         }
+        
+        var canvas = new Canvas();
+        canvas.init();
+        canvas.draw( sprite, this.position );
     };
     
     this.getId = function() {
@@ -64,7 +63,7 @@ var Creature = function() {
     };
     
     this.getPosition = function() {
-        return position;
+        return this.position;
     };
     
     this.setPosition = function( position ) {
@@ -72,31 +71,31 @@ var Creature = function() {
     };
     
     this.getHealthPercent = function() {
-        return healthPercent;
+        return this.healthPercent;
     };
     
     this.setHealthPercent = function( healthPercent ) {
-        return this.healthPercent = healthPercent;
+        this.healthPercent = healthPercent;
     };
     
     this.getSpeed = function() {
-        return speed;
+        return this.speed;
     };
     
     this.setSpeed = function( speed ) {
-        return this.speed = speed;
+        this.speed = speed;
     };
     
     this.isWalking = function() {
-        return walking;
+        return this.walking;
     };
     
     this.setWalking = function( walking ) {
-        return this.walking = walking;
+        this.walking = walking;
     };
     
     this.getDirection = function() {
-        return direction;
+        return this.direction;
     };
     
     this.setDirection = function( direction ) {
@@ -106,7 +105,7 @@ var Creature = function() {
     };
     
     this.getOutfit = function() {
-        return outfit;
+        return this.outfit;
     };
     
     this.setOutfit = function( outfit ) {

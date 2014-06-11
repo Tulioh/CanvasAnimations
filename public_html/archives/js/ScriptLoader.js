@@ -11,6 +11,7 @@ loadScript( "HttpHelper" );
 loadScript( "EventHandler" );
 loadScript( "const/Direction" );
 loadScript( "const/Keys" );
+loadScript( "framework/Timer" );
 
 function loadScript( path ) {
     document.write(

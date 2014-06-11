@@ -7,14 +7,16 @@ function main() {
     
     var map = new Map();
     map.init();
-    map.drawMap();
     
     var eventHandler = new EventHandler();
     
     var gameLoop = function() {
+        map.drawMap();
         testeCreature();
         
         eventHandler.handle();
+        
+        
         window.requestAnimationFrame( gameLoop );
     };
     window.requestAnimationFrame( gameLoop );
@@ -33,7 +35,7 @@ function testeCreature() {
     creature.setHealthPercent( 100 );
     creature.setSpeed( 200 );
     creature.setOutfit( [ 1000, 1001, 1002, 1003 ] );
-    creature.setWalking( true )
+    creature.setWalking( true );
     
     creature.draw();
 }

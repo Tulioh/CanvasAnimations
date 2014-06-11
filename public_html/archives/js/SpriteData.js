@@ -1,6 +1,9 @@
 var SpriteData = function() {
-    
+
     this.init = function() {
+        if( SpriteData.prototype.items == null )
+            SpriteData.prototype.items = [];
+        
         this.loadSpriteItems();
     };
     
@@ -27,25 +30,31 @@ var SpriteData = function() {
                 var framePos = new Position();
                 framePos.x = spriteData.frames[0].posX;
                 framePos.y = spriteData.frames[0].posY;
-                sprite.setActualFrame( 0 );
+                sprite.setCurrentFrame( 0 );
                 sprite.addFrame( framePos );
             }
             
             item.setSprite( sprite );
             
-            SpriteData.items.push( item );
+           addItem( item );
         });
         
     };
     
+    function getItems() {
+        return SpriteData.prototype.items;
+    };
+    
+    function addItem( item ) {
+        SpriteData.prototype.items.push( item );
+    };
+    
     this.getItemById = function( id ) {
-        for( var i = 0; i <= SpriteData.items.length; i++ ) {
-            var item = SpriteData.items[i];
+        for( var i = 0; i <= getItems().length; i++ ) {
+            var item = getItems()[i];
             
             if( item.getId() == id )
                 return item;
         }
     };
 };
-
-SpriteData.items = [];

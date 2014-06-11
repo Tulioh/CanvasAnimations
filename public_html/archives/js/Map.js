@@ -8,10 +8,12 @@ var Map = function() {
     var creatures = [];
     
     var canvas = new Canvas();
+    canvas.init();
     
     this.init = function() {
         parseJsonMap();
-        canvas.init();
+        
+        return this;
     };
     
     this.drawMap = function() {
@@ -24,17 +26,7 @@ var Map = function() {
         var sprite = tile.getItem().getSprite();
         var position = tile.getPosition();
         
-        canvas.getContext().drawImage(
-            sprite.getImage(),
-            sprite.getFrames()[ sprite.actualFrame ].x * 32,
-            sprite.getFrames()[ sprite.actualFrame ].y * 32,
-            sprite.getWidth(),
-            sprite.getHeight(),
-            position.x * 32,
-            position.y * 32,
-            sprite.getWidth(),
-            sprite.getHeight()
-        );
+        canvas.draw( sprite, position );
     };
     
     var parseJsonMap = function() {
