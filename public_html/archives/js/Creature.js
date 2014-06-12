@@ -6,49 +6,42 @@ var Creature = function() {
     var walking = false;
     var direction;
     var lastAnimationTime = new Timer();
-    var outfit = [];
+    // the full animation outfit it's 4 id. The order is: South, North, East and West
+    var outfit = new Outfit();
     
     this.walk = function( oldPos, newPos ) {
         if(oldPos == newPos)
             return;
         
-        walking = true;
         
-        position = newPos;
+        
+        walking = true;
     };
     
     this.doWalkingAnimation = function( newPosition ) {
-        position.add( newPosition );
-        walking = true;
+        if( lastAnimationTime.getTicksElapsed() > 250) {
+            if (sprite.getCurrentFrame() !== 1) {
+                sprite.setCurrentFrame(1);
+            } else {
+                sprite.setCurrentFrame(2);
+            }
+
+            lastAnimationTime.restart();
+        }
     };
     
     // teste
     this.draw = function() {
-        var item = new SpriteData().getItemById( this.outfit[0] );
-        var sprite = item.getSprite();
-        
         if( sprite.getCurrentFrame() == null )
             sprite.setCurrentFrame( 0 );
         
         if( this.isWalking() ) {           
-            
-            if( lastAnimationTime.getTicksElapsed() > 500 ) {                
-                if( sprite.getCurrentFrame() !== 1) {
-                    sprite.setCurrentFrame(1);
-                } else {
-                    sprite.setCurrentFrame(2);
-                }
-
-                lastAnimationTime.restart();
-            }
-            
+            this.doWalkingAnimation;
         } else {
             sprite.setCurrentFrame( 0 );
         }
         
-        var canvas = new Canvas();
-        canvas.init();
-        canvas.draw( sprite, this.position );
+        Canvas.draw( sprite, this.position );
     };
     
     this.getId = function() {

@@ -55,20 +55,7 @@
             {
                 "posX": 2,
                 "posY": 0
-            }
-        ]
-    },
-    {
-        "id": 1001,
-        "image": "testes",
-        "width": 32,
-        "height": 32,
-        "ground": false,
-        "walkable": false,
-        "stackable": false,
-        "movable": true,
-        "animated": true,
-        "frames":[
+            },
             {
                 "posX": 3,
                 "posY": 0
@@ -80,20 +67,7 @@
             {
                 "posX": 5,
                 "posY": 0
-            }
-        ]
-    },
-    {
-        "id": 1002,
-        "image": "testes",
-        "width": 32,
-        "height": 32,
-        "ground": false,
-        "walkable": false,
-        "stackable": false,
-        "movable": true,
-        "animated": true,
-        "frames":[
+            },
             {
                 "posX": 6,
                 "posY": 0
@@ -105,20 +79,7 @@
             {
                 "posX": 8,
                 "posY": 0
-            }
-        ]
-    },
-    {
-        "id": 1003,
-        "image": "testes",
-        "width": 32,
-        "height": 32,
-        "ground": false,
-        "walkable": false,
-        "stackable": false,
-        "movable": true,
-        "animated": true,
-        "frames":[
+            },
             {
                 "posX": 9,
                 "posY": 7

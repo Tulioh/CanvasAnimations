@@ -7,6 +7,7 @@ loadScript( "Item" );
 loadScript( "Map" );
 loadScript( "LocalPlayer" );
 loadScript( "Creature" );
+loadScript( "Outfit" );
 loadScript( "HttpHelper" );
 loadScript( "EventHandler" );
 loadScript( "const/Direction" );

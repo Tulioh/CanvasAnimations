@@ -1,11 +1,10 @@
 var EventHandler = function() {
-    var localPlayer = new LocalPlayer();
     
     this.handle = function() {
         handlePlayerEvents();
     };
     
-    var handlePlayerEvents = function() {
+    var handlePlayerEvents = function() {/*
         window.onkeydown = function(key) {
             if (key.keyCode == KeysConst.UP) {
                 var pos = new Position();
@@ -24,6 +23,6 @@ var EventHandler = function() {
                 pos.x = +1;
                 pos.y = 0;
             }
-        };
+        };*/
     };
 };

@@ -2,6 +2,7 @@ var Sprite = function() {
     var image;
     var width;
     var height;
+    var scaleFactor;
     var frames = [];
     var currentFrame;
     
@@ -29,6 +30,14 @@ var Sprite = function() {
     
     this.setHeight = function( height ) {
         this.height = height;
+    };
+    
+    this.getScaleFactor = function() {
+        return this.scaleFactor;
+    };
+    
+    this.setScaleFactor = function( scaleFactor ) {
+        this.scaleFactor = scaleFactor;
     };
     
     this.getFrames = function() {
