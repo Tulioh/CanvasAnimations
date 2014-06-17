@@ -1,10 +1,10 @@
 var Creature = function() {
     var id = 0;
     var position = new Position();
+    var direction;
     var healthPercent = 100;
     var speed = 200;
     var walking = false;
-    var direction;
     var lastAnimationTime = new Timer();
     // the full animation outfit it's 4 id. The order is: South, North, East and West
     var outfit = new Outfit();
@@ -13,17 +13,34 @@ var Creature = function() {
         if(oldPos == newPos)
             return;
         
-        
-        
+        position = newPos;
+        direction = oldPos.getDirectionFromPosition( newPos );
         walking = true;
+        
+        doWalkingAnimation( newPos );
     };
     
-    this.doWalkingAnimation = function( newPosition ) {
+    this.doWalkingAnimation = function( direction ) {
+        if( direction === DirectionConst.North ) {
+            // 4, 5
+        } else if( direction === DirectionConst.South ) {
+            // 1, 2
+        } else if( direction === DirectionConst.East ||
+                direction === DirectionConst.NorthEast ||
+                direction === DirectionConst.SouthEast ) {
+            // 7, 8
+        } else if( direction === DirectionConst.West ||
+                direction === DirectionConst.SouthWest ||
+                direction === DirectionConst.NorthWest ) {
+            // 10, 11
+        }
+            
+            
         if( lastAnimationTime.getTicksElapsed() > 250) {
-            if (sprite.getCurrentFrame() !== 1) {
-                sprite.setCurrentFrame(1);
+            if (outfit.getCurrentFrame() !== 1) {
+                outfit.setCurrentFrame(1);
             } else {
-                sprite.setCurrentFrame(2);
+                outfit.setCurrentFrame(2);
             }
 
             lastAnimationTime.restart();
@@ -32,16 +49,16 @@ var Creature = function() {
     
     // teste
     this.draw = function() {
-        if( sprite.getCurrentFrame() == null )
-            sprite.setCurrentFrame( 0 );
+        if( outfit.getCurrentFrame() == null )
+            outfit.setCurrentFrame( 0 );
         
         if( this.isWalking() ) {           
             this.doWalkingAnimation;
         } else {
-            sprite.setCurrentFrame( 0 );
+            outfit.setCurrentFrame( 0 );
         }
         
-        Canvas.draw( sprite, this.position );
+        Canvas.draw( outfit, this.position );
     };
     
     this.getId = function() {

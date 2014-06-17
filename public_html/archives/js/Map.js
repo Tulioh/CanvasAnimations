@@ -26,7 +26,7 @@ var Map = function() {
         var sprite = tile.getItem().getSprite();
         var position = tile.getPosition();
         
-        canvas.draw( sprite, position );
+        Canvas.draw( sprite, position );
     };
     
     var parseJsonMap = function() {

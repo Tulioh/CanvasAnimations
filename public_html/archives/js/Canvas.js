@@ -10,7 +10,7 @@ var Canvas = function() {
     };
     
     this.clearCanvas = function() {
-        this.getContext().clearRect( 0, 0, canvas.width, canvas.height );
+        this.prototype.context.clearRect( 0, 0, this.prototype.canvas.width, this.prototype.canvas.height );
     };
     
     this.getCanvas = function() {
@@ -23,7 +23,7 @@ var Canvas = function() {
 };
 
 Canvas.draw = function(sprite, position) {
-    this.getContext().drawImage(
+    this.prototype.context.drawImage(
             sprite.getImage(),
             sprite.getFrames()[ sprite.getCurrentFrame() ].x * 32,
             sprite.getFrames()[ sprite.getCurrentFrame() ].y * 32,
