@@ -13,6 +13,12 @@ var Canvas = function() {
         this.prototype.context.clearRect( 0, 0, this.prototype.canvas.width, this.prototype.canvas.height );
     };
     
+    this.copyImageData = function( image, rect ) {
+        this.prototype.context.drawImage( image, 0, 0);
+        this.prototype.context.getImageData( rect.x, rect.y, rect.width, rect.height );
+        this.clearCanvas;
+    };
+    
     this.getCanvas = function() {
         return Canvas.prototype.canvas;
     };

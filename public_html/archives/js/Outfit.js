@@ -1,20 +1,20 @@
 var Outfit = function() {
     var sprite = [];
     
-    this.getSpriteNorth = function() {
-        return getSpriteByIndex( 1 );
+    this.getIdleSpriteNorth = function() {
+        return getSpriteByIndex( 3 );
     };
     
-    this.getSpriteSouth = function() {
+    this.getIdleSpriteSouth = function() {
         return getSpriteByIndex( 0 );
     };
     
-    this.getSpriteEast = function() {
-        return getSpriteByIndex( 2 );
+    this.getIdleSpriteEast = function() {
+        return getSpriteByIndex( 6 );
     };
     
-    this.getSpriteWest = function() {
-        return getSpriteByIndex( 3 );
+    this.getIdleSpriteWest = function() {
+        return getSpriteByIndex( 9 );
     };
     
     var getSpriteByIndex = function( index ) {

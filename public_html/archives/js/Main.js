@@ -60,7 +60,6 @@ window.onkeydown = function(key) {
             newPos.x = newPos.x + 1;
             break;
         default:
-            
     }
     
     creature.walk( oldPos, newPos );
